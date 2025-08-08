@@ -1,110 +1,110 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import './LoginPage.css';
+
+const usuarios = [
+  { email: "juan@correo.com", password: "jua123" },
+  { email: "maria@correo.com", password: "mar123" },
+  { email: "carlos@correo.com", password: "car123" },
+  { email: "laura@correo.com", password: "lau123" },
+  { email: "andres@correo.com", password: "and123" },
+  { email: "camila@correo.com", password: "cam123" },
+  { email: "david@correo.com", password: "dav123" },
+  { email: "paula@correo.com", password: "Pau123" },
+  { email: "jose@correo.com", password: "jos123" },
+  { email: "valentina@correo.com", password: "val123" }
+];
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
 
-  const containerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundColor: '#959393ff',
-  };
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  const cardStyle = {
-    padding: '30px',
-    borderRadius: '10px',
-    boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)',
-    backgroundColor: 'white',
-    width: '100%',
-    maxWidth: '400px',
-    textAlign: 'center',
-  };
+    const emailTrim = email.trim();
+    const passwordTrim = password.trim();
 
-  const inputStyle = {
-    width: '100%',
-    padding: '10px',
-    margin: '10px 0',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-  };
+    // Validaciones
+    if (!emailTrim || !passwordTrim) {
+      Swal.fire("Campos vacíos", "Por favor llena todos los campos.", "warning");
+      return;
+    }
 
-  const buttonStyle = {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#d4af37',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-  };
+    const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formatoCorreo.test(emailTrim)) {
+      Swal.fire("Correo inválido", "Por favor escribe un correo válido.", "error");
+      return;
+    }
 
-  const linkStyle = {
-    marginTop: '15px',
-    fontSize: '0.9rem',
-  };
+    const usuarioValido = usuarios.find(
+      (u) => u.email === emailTrim && u.password === passwordTrim
+    );
 
-  const socialButtonsStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '20px',
-    marginTop: '15px',
-    marginBottom: '15px',
-  };
-
-  const iconStyle = {
-    width: '30px',
-    height: '30px',
-    cursor: 'pointer',
+    if (usuarioValido) {
+      Swal.fire({
+        title: "¡Bienvenido!",
+        text: "Inicio de sesión exitoso.",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false
+      }).then(() => {
+        
+        // Redireccionar a otra página
+        window.location.href = "/dashboard"; // Ajusta la ruta según tu app
+      });
+    } else {
+      Swal.fire("Error", "Correo o contraseña incorrectos.", "error");
+    }
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={cardStyle}>
-        <h2>SportGlam</h2> 
-        <input
-          style={inputStyle}
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          style={inputStyle}
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div style={{ textAlign: 'left', marginBottom: '10px' }}>
+    <div className="login-container">
+      <div className="login-card">
+        <h2>SportGlam</h2>
+        <form onSubmit={handleLogin}>
           <input
-            type="checkbox"
-            checked={remember}
-            onChange={(e) => setRemember(e.target.checked)}
-          />{' '}
-          Recuérdame
-        </div>
-        <button style={buttonStyle}>Entrar</button>
+            className="login-input"
+            type="email"
+            placeholder="Correo electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="login-input"
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className="login-remember">
+            <input
+              type="checkbox"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />{' '}
+            Recuérdame
+          </div>
+          <button type="submit" className="login-button">Entrar</button>
+        </form>
 
-        <div style={socialButtonsStyle}>
+        <div className="social-buttons">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
             alt="Google login"
-            style={iconStyle}
+            className="social-icon"
             onClick={() => alert('Iniciar sesión con Google')}
           />
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
             alt="Facebook login"
-            style={iconStyle}
+            className="social-icon"
             onClick={() => alert('Iniciar sesión con Facebook')}
           />
         </div>
 
-        <div style={linkStyle}>
+        <div className="login-link">
           ¿No tienes cuenta? <a href="/register">Regístrate</a>
         </div>
       </div>

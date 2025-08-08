@@ -1,0 +1,19 @@
+.hero-section {
+  height: 70vh;
+  background: url('/IMG/sport-background.jpg') no-repeat center center/cover;
+  padding: 2rem;
+}
+
+.product-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.home-page .btn {
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 1140px;
+}
+

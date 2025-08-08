@@ -1,19 +1,98 @@
-
 body {
-  background-color: #f0f2f5;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.card {
-  background-color: white;
-  border-radius: 1rem;
+.login-container {
+  background-color: #0ec1ce; /* celeste pastel */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-a {
-  color: #0d6efd;
+.login-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  width: 330px;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.login-remember input {
+  margin-right: 8px;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #c9aa00; /* dorado suave */
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #b69800;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.login-link {
+  font-size: 14px;
+  color: #333;
+}
+
+.login-link a {
+  color: #6a5acd;
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+.login-container {
+   background-image: url('../assets/logo.jpg');
+    background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
 }
-
