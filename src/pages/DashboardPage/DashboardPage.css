@@ -1,19 +1,100 @@
-.hero-section {
-  height: 70vh;
-  background: url('/IMG/sport-background.jpg') no-repeat center center/cover;
-  padding: 2rem;
+.dashboard-container {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f8f9fa;
 }
 
-.product-image {
-  height: 220px;
+/* Encabezado */
+.store-header {
+  background: linear-gradient(90deg, rgba(129, 142, 150, 1) 24%, rgba(72, 92, 107, 1) 100%);
+  text-align: center;
+  padding: 30px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.brand-subtitle {
+  font-size: 1rem;
+  color: #fff; 
+  margin: 0;
+}
+
+/* Barra superior */
+.top-bar {
+  background-color: rgb(210, 211, 211);
+  border-bottom: 1px solid #131010;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+}
+
+.search-bar input {
+  border-radius: 4px;
+}
+
+.search-bar button {
+  border-radius: 4px;
+}
+
+/* Categorías */
+.categories a {
+  font-weight: bold;
+  color: black;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.categories a:hover {
+  color: #ef680d;
+}
+
+
+/* Productos */
+.product-card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  height: 250px;
+  width: 100%;
   object-fit: cover;
 }
 
-.home-page .btn {
-  border-radius: 8px;
+.price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0a0a0a;
 }
 
-.container {
-  max-width: 1140px;
+/* Footer */
+.store-footer {
+  background: linear-gradient(90deg, rgba(129, 142, 150, 1) 24%, rgba(72, 92, 107, 1) 100%);
+  color: rgb(23, 23, 23);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
+  font-size: 0.9rem;
 }
 
+
+.store-footer {
+  background: linear-gradient(90deg, rgba(129, 142, 150, 1) 24%, rgba(72, 92, 107, 1) 100%);
+  color: rgb(23, 23, 23);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 25px;
+  font-size: 1.2rem; 
+  font-weight: bold; 
+}

@@ -1,58 +1,93 @@
-import React from 'react';
-import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col, Card, Button, Form, FormControl } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./DashboardPage.css";
 
+// Imágenes de productos
+import camisetaImg from "../assets/nacional.webp";
+import zapatillasImg from "../assets/adidas mujer.avif";
+import rolexImg from "../assets/rolex.webp";
 
 const featuredProducts = [
   {
     id: 1,
-    name: 'Balón de Fútbol ',
-    image: '/IMG/ball.jpg',
-    price: '$120.000',
+    name: "Camiseta de fútbol Nacional",
+    image: camisetaImg,
+    price: "$120.000",
   },
   {
     id: 2,
-    name: 'Zapatillas Running',
-    image: '/IMG/shoes.jpg',
-    price: '$280.000',
+    name: "Zapatos Adidas Mujer",
+    image: zapatillasImg,
+    price: "$230.000",
   },
   {
     id: 3,
-    name: 'Reloj Rolex',
-    image: '/IMG/gloves.jpg',
-    price: '$180.000',
+    name: "Reloj Rolex Caballero",
+    image: rolexImg,
+    price: "$185.000",
   },
 ];
 
-export default function DashboardPage() {
+const DashboardPage = () => {
   return (
-    <div>
-      {/* Hero Section */}
-      <div className="hero-section text-white text-center d-flex align-items-center justify-content-center">
-        <div>
-          <h1 className="display-4 fw-bold">Bienvenido a SportGlam</h1>
-          <p className="lead">Tu tienda deportiva de confianza. ¡Equípate con lo mejor!</p>
-          <Button variant="warning" size="lg" className="mt-3">Ver Productos</Button>
+    <div className="dashboard-container">
+      {/* Encabezado */}
+      <header className="store-header text-center py-3">
+        <h1 className="brand-title">SportGlam</h1>
+        <p className="brand-subtitle">Tu tienda de confianza</p>
+      </header>
+
+      {/* Barra búsqueda + categorías */}
+      <div className="top-bar shadow-sm py-2 px-3 d-flex align-items-center justify-content-between">
+        {/* Búsqueda a la izquierda */}
+        <Form className="d-flex search-bar">
+          <FormControl
+            type="search"
+            placeholder="Buscar productos..."
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Buscar</Button>
+        </Form>
+
+        {/* Categorías a la derecha */}
+        <div className="categories d-flex">
+          <a href="#hombre">HOMBRE</a>
+          <a href="#mujer">MUJER</a>
+          <a href="#marcas">MARCAS</a>
+          <a href="#deportes">DEPORTES</a>
+          <a href="#salir" className="">SALIR</a>
         </div>
       </div>
 
-      {/* Featured Products */}
-      <Container className="mt-5">
+      {/* Productos */}
+      <Container className="mt-4">
         <h2 className="text-center mb-4">Productos Destacados</h2>
         <Row>
           {featuredProducts.map((product) => (
-            <Col md={4} key={product.id} className="mb-4">
-              <Card className="h-100 shadow-sm">
-                <Card.Img variant="top" src={product.image} />
-                <Card.Body className="d-flex flex-column">
+            <Col key={product.id} md={4} sm={6} xs={12} className="mb-4">
+              <Card className="product-card">
+                <Card.Img variant="top" src={product.image} alt={product.name} />
+                <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
-                  <Card.Text className="text-muted">{product.price}</Card.Text>
-                  <Button variant="primary" className="mt-auto">Ver más</Button>
+                  <Card.Text className="price">{product.price}</Card.Text>
+                  <Button variant="success" className="w-100">
+                    Agregar al carrito
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
       </Container>
+
+      {/* Footer */}
+      <footer className="store-footer">
+        <p>SportGlam 2025</p>
+      </footer>
     </div>
   );
-}
+};
+
+export default DashboardPage;
