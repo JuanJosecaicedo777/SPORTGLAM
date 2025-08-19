@@ -3,40 +3,39 @@ import { Container, Row, Col, Card, Button, Form, FormControl } from "react-boot
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DashboardPage.css";
 
-// 🔹 Imágenes del banner (guárdalas en /src/assets o /public/IMG)
+// 🔹 Imágenes del banner
 import F50 from "../assets/F50.webp";
 import Zapatos from "../assets/Zapatos.webp";
 import Banner from "../assets/BANNER.webp";
 
-
 // 🔹 Imágenes de productos
 import camisetaImg from "../assets/nacional.webp";
 import zapatillasImg from "../assets/adidas mujer.avif";
-import rolexImg from "../assets/rolex.webp";
+import rolexImg from "../assets/rolex.webp"; 
 
-// 🔹 Productos destacados en array (más escalable)
+// 🔹 Productos destacados en array
 const featuredProducts = [
   {
     id: 1,
     name: "Camiseta de fútbol Nacional",
     image: camisetaImg,
-    price: "$120.000",
+    price: 120000, // 👈 en número, no string
   },
   {
     id: 2,
     name: "Zapatos Adidas Mujer",
     image: zapatillasImg,
-    price: "$230.000",
+    price: 230000,
   },
   {
     id: 3,
     name: "Reloj Rolex Caballero",
     image: rolexImg,
-    price: "$185.000",
+    price: 185000,
   },
 ];
 
-const DashboardPage = () => {
+const DashboardPage = ({ agregarCarrito }) => {
   return (
     <div className="dashboard-container">
       {/* 🔹 Encabezado */}
@@ -68,16 +67,13 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      {/* 🔹 Banner estilo SportLine */}
+      {/* 🔹 Banner */}
       <Container fluid className="mb-5 mt-3">
         <Row>
           <Col md={8}>
             <div className="position-relative">
               <img src={F50} alt="Banner principal" className="img-fluid w-100 rounded" />
-              <Button
-                variant="dark"
-                className="position-absolute bottom-0 start-0 m-3"
-              >
+              <Button variant="dark" className="position-absolute bottom-0 start-0 m-3">
                 Ver más
               </Button>
             </div>
@@ -87,10 +83,7 @@ const DashboardPage = () => {
               <Col>
                 <div className="position-relative">
                   <img src={Zapatos} alt="Imagen secundaria" className="img-fluid mb-3 rounded" />
-                  <Button
-                    variant="dark"
-                    className="position-absolute bottom-0 start-0 m-2"
-                  >
+                  <Button variant="dark" className="position-absolute bottom-0 start-0 m-2">
                     Ver colección
                   </Button>
                 </div>
@@ -100,14 +93,9 @@ const DashboardPage = () => {
               <Col>
                 <div className="position-relative">
                   <img src={Banner} alt="Imagen secundaria 2" className="img-fluid rounded" />
-                  <Button
-                    variant="dark"
-                    className="position-absolute bottom-0 start-0 m-2"
-                  >
+                  <Button variant="dark" className="position-absolute bottom-0 start-0 m-2">
                     Ver más
                   </Button>
-
-
                 </div>
               </Col>
             </Row>
@@ -125,9 +113,16 @@ const DashboardPage = () => {
                 <Card.Img variant="top" src={product.image} alt={product.name} />
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
-                  <Card.Text className="price">{product.price}</Card.Text>
-                  <Button variant="success" className="w-100">
+                  <Card.Text className="price">
+                    ${product.price.toLocaleString()}
+                  </Card.Text>
+                  <Button
+                    variant="success"
+                    className="w-100"
+                    onClick={() => agregarCarrito(product)} // 👈 Aquí conectamos con App.js
+                  >
                     Agregar al carrito
+                    
                   </Button>
                 </Card.Body>
               </Card>
@@ -136,7 +131,7 @@ const DashboardPage = () => {
         </Row>
       </Container>
 
-      {/* 🔹 Footer */}
+      {/* 🔹 pie de pagina */}
       <footer className="store-footer text-center mt-4 py-3">
         <p>SportGlam 2025</p>
       </footer>

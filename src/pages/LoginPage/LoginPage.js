@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import './LoginPage.css';
 
 const usuarios = [
-  { email: "juan@correo.com", password: "jua123" },
+  { email: "juan@correo.com", password: "1234" },
   { email: "maria@correo.com", password: "mar123" },
   { email: "carlos@correo.com", password: "car123" },
   { email: "laura@correo.com", password: "lau123" },
