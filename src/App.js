@@ -5,13 +5,12 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import CartPage from "./pages/CartPage/CartPage"; // 👈 crea este archivo
 
 function App() {
   const [cart, setCart] = useState([]);
 
   const agregarCarrito = (product) => {
-    setCart([...cart, product]); // 👈 agrega producto al carrito
+    setCart([...cart, product]);
   };
 
   return (
@@ -24,7 +23,6 @@ function App() {
           path="/dashboard"
           element={<DashboardPage agregarCarrito={agregarCarrito} />}
         />
-        <Route path="/cart" element={<CartPage cart={cart} />} />
       </Routes>
     </BrowserRouter>
   );
