@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./DashboardPage.css";
 
 // 🔹 Imágenes del banner
-import F50 from "../assets/F50.webp";
+import F50 from "../assets/adidas-banner.avif";
 import Zapatos from "../assets/Zapatos.webp";
 import Banner from "../assets/BANNER.webp";
 
@@ -12,8 +12,8 @@ import Banner from "../assets/BANNER.webp";
 import MujerImg from "../assets/BANNER-MUJER_2.webp"; 
 import HombreImg from "../assets/BANNER-HOMBRE.webp"; 
 import MujerZap1 from "../assets/nike-mujer.webp";
-import MujerZap2 from "../assets/zapatillas-nike 7.webp";
-import HombreZap1 from "../assets/zapatillas nike-hombre.webp";
+import MujerZap2 from "../assets/Camiseta-adidas mujer.webp";
+import HombreZap1 from "../assets/Camiseta-adidas hombre.webp";
 import HombreZap2 from "../assets/zapatillas-nike run.webp";
 
 // 🔹 Imágenes de productos destacados
@@ -58,7 +58,7 @@ const DashboardPage = ({ agregarCarrito }) => {
         <Form className="d-flex search-bar">
           <input
             type="search"
-            placeholder="Buscar productos..."
+            placeholder="Buscar productos.."
             className="form-control me-2"
             aria-label="Search"
           />
@@ -131,8 +131,8 @@ const DashboardPage = ({ agregarCarrito }) => {
                 <Card className="producto-card">
                   <Card.Img variant="top" src={MujerZap2} />
                   <Card.Body>
-                    <Card.Title>Zapatillas Nike Bella Mujer</Card.Title>
-                    <p><strong>$319.950</strong></p>
+                    <Card.Title>Camiseta Deportiva Adidas</Card.Title>
+                    <p><strong>$129.950</strong></p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -149,7 +149,7 @@ const DashboardPage = ({ agregarCarrito }) => {
                 <Card className="producto-card">
                   <Card.Img variant="top" src={HombreZap1} />
                   <Card.Body>
-                    <Card.Title>Nike Air Monarch IV Hombre</Card.Title>
+                    <Card.Title>Camiseta Deportiva Adidas </Card.Title>
                     <p><strong>$139.950</strong></p>
                   </Card.Body>
                 </Card>
@@ -203,7 +203,7 @@ const DashboardPage = ({ agregarCarrito }) => {
 
       {/* 🔹 pie de pagina */}
       <footer className="store-footer text-center mt-4 py-3">
-        <p>SportGlam 2025</p>
+        <p>SportGlam</p>
       </footer>
     </div>
   );

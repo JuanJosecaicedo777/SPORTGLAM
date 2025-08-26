@@ -1,32 +1,43 @@
-.dashboard-container {
+/*  Fondo general  */
+body {
+  background-color: #ffffff;
+  color: #2C3E50;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
   background-color: #f8f9fa;
 }
 
-/* Encabezado */
+/*  Encabezado  */
 .store-header {
-  background: linear-gradient(90deg, rgb(159, 171, 179) 24%, rgba(72, 92, 107, 1) 100%);
+  background: #0A3D62; 
+  color: white;
   text-align: center;
-  padding: 30px 0;
+  padding: 25px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.brand-title {
+.brand-title,
+.store-header h1 {
   font-size: 2.5rem;
   font-weight: bold;
   margin: 0;
 }
 
-.brand-subtitle {
+.brand-subtitle,
+.store-header p {
   font-size: 1rem;
-  color: #fff; 
+  color: #dcdde1;
   margin: 0;
 }
 
-/* Barra superior */
+/*  Barra superior */
 .top-bar {
-  background-color: rgb(210, 211, 211);
-  border-bottom: 1px solid #131010;
+  background-color: #f4f6f7;
+  border-bottom: 2px solid #0A3D62;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,27 +45,47 @@
 }
 
 .search-bar input {
-  border-radius: 4px;
+  border: 1px solid #0A3D62;
+  border-radius: 5px;
 }
 
 .search-bar button {
-  border-radius: 4px;
+  background-color: #27AE60; 
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-/* Categorías */
-.categories a {
+.search-bar button:hover {
+  background-color: #1e8449;
+}
+
+/*  Menú de navegación  */
+.categories,
+.nav-menu {
+  background-color: #f4f6f7;
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #0A3D62;
+}
+
+.categories a,
+.nav-menu a {
+  color: #2C3E50;
   font-weight: bold;
-  color: black;
-  margin-left: 15px;
+  margin: 0 15px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
-.categories a:hover {
-  color: #ef680d;
+.categories a:hover,
+.nav-menu a:hover {
+  color: #2980B9; 
 }
 
-
-/* Productos */
+/* Tarjetas de productos  */
 .product-card {
   border-radius: 8px;
   overflow: hidden;
@@ -75,26 +106,16 @@
 .price {
   font-weight: bold;
   font-size: 1.2rem;
-  color: #0a0a0a;
+  color: #0A3D62;
 }
 
-/* pie de pagina */
+/* ===== Pie de página ===== */
 .store-footer {
-  background: linear-gradient(90deg, rgb(159, 171, 179) 24%, rgba(72, 92, 107, 1) 100%);
-  color: rgb(23, 23, 23);
+  background: #0A3D62;
+  color: white;
   text-align: center;
   padding: 15px 0;
   margin-top: 30px;
-  font-size: 0.9rem;
-}
-
-
-.store-footer {
- background: linear-gradient(90deg, rgb(159, 171, 179) 24%, rgba(72, 92, 107, 1) 100%);
-  color: rgb(23, 23, 23);
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 25px;
-  font-size: 1.2rem; 
-  font-weight: bold; 
+  font-size: 1rem;
+  font-weight: bold;
 }
