@@ -13,7 +13,7 @@ body {
 
 /*  Encabezado  */
 .store-header {
-  background: #0A3D62; 
+  background: #1f1f1f; 
   color: white;
   text-align: center;
   padding: 25px 0;
@@ -68,7 +68,7 @@ body {
   background-color: #f4f6f7;
   text-align: center;
   padding: 10px;
-  border-top: 2px solid #0A3D62;
+  border-top: 2px solid #1f1f1f;
 }
 
 .categories a,
@@ -82,7 +82,7 @@ body {
 
 .categories a:hover,
 .nav-menu a:hover {
-  color: #2980B9; 
+  color: #f11313; 
 }
 
 /* Tarjetas de productos  */
@@ -106,12 +106,12 @@ body {
 .price {
   font-weight: bold;
   font-size: 1.2rem;
-  color: #0A3D62;
+  color: #1f1f1f;;
 }
 
-/* ===== Pie de página ===== */
+/*  Pie de página */
 .store-footer {
-  background: #0A3D62;
+  background: #1f1f1f;;
   color: white;
   text-align: center;
   padding: 15px 0;
@@ -119,3 +119,4 @@ body {
   font-size: 1rem;
   font-weight: bold;
 }
+

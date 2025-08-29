@@ -14,7 +14,7 @@ import HombreImg from "../assets/BANNER-HOMBRE.webp";
 import MujerZap1 from "../assets/nike-mujer.webp";
 import MujerZap2 from "../assets/Camiseta-adidas mujer.webp";
 import HombreZap1 from "../assets/Camiseta-adidas hombre.webp";
-import HombreZap2 from "../assets/zapatillas-nike run.webp";
+import HombreZap2 from "../assets/rolex-hd.avif";
 
 // 🔹 Imágenes de productos destacados
 import camisetaImg from "../assets/nacional.webp";
@@ -88,7 +88,7 @@ const DashboardPage = ({ agregarCarrito }) => {
             </div>
           </Col>
 
-          {/* Dos imágenes a la derecha */}
+          {/* imágenes a la derecha */}
           <Col md={4} className="d-flex flex-column gap-3">
             <div className="position-relative flex-fill">
               <img src={Zapatos} alt="Imagen secundaria" className="img-fluid w-100 h-100 rounded object-fit-cover" />
@@ -158,7 +158,7 @@ const DashboardPage = ({ agregarCarrito }) => {
                 <Card className="producto-card">
                   <Card.Img variant="top" src={HombreZap2} />
                   <Card.Body>
-                    <Card.Title>Nike Air Monarch IV Hombre</Card.Title>
+                    <Card.Title>Rolex Edicion Especial</Card.Title>
                     <p><strong>$229.950</strong></p>
                   </Card.Body>
                 </Card>
