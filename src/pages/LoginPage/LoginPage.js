@@ -3,13 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import Swal from "sweetalert2";
 
+// 🔹 Importa Firebase
+import { auth, googleProvider } from "../../Firebase/Firebase";
+import { signInWithPopup } from "firebase/auth";
+
 function Login() {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // 🔹 Login manual con usuario fijo
+  // 🔹 Login manual con usuario fijo (demo)
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -20,6 +24,19 @@ function Login() {
     } else {
       setError("Correo/contraseña inválidos.");
       Swal.fire("Error", "Correo/contraseña inválidos.", "error");
+    }
+  };
+
+  // 🔹 Login con Google
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      Swal.fire("Bienvenido", `Hola ${user.displayName}`, "success");
+      navigate("/dashboard"); // 🔹 Redirige al Dashboard
+    } catch (err) {
+      console.error("Error en Google Login:", err);
+      Swal.fire("Error", "No se pudo iniciar sesión con Google.", "error");
     }
   };
 
@@ -53,23 +70,9 @@ function Login() {
 
         <p className="or">O continúa con:</p>
         <div className="social-buttons">
-          <button
-            type="button"
-            className="btn-social google"
-            onClick={() =>
-              Swal.fire("Aviso", "Login con Google deshabilitado en modo demo", "info")
-            }
-          >
+          {/* 🔹 Botón Google funcional */}
+          <button type="button" className="btn-social google" onClick={handleGoogleLogin}>
             <i className="fab fa-google"></i> Google
-          </button>
-          <button
-            type="button"
-            className="btn-social facebook"
-            onClick={() =>
-              Swal.fire("Aviso", "Login con Facebook deshabilitado en modo demo", "info")
-            }
-          >
-            <i className="fab fa-facebook-f"></i> Facebook
           </button>
         </div>
 

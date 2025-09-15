@@ -1,116 +1,157 @@
+/* Fondo con gradiente elegante */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa, #e3eafc);
+  background: linear-gradient(135deg, #d4af37, #2c3e50);
+  font-family: "Poppins", sans-serif;
 }
 
+/* Caja estilo glassmorphism */
 .login-box {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.login-title {
+/* Animación suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo */
+.logo {
+  width: 130px;
   margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #2c3e50;
 }
 
+/* Título */
+.login-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Inputs */
 .form-input {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   outline: none;
-  transition: border 0.3s ease;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .form-input:focus {
-  border: 1px solid #007bff;
+  border: 1px solid #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
 }
 
+/* Botón login */
 .btn-login {
   width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  background: #007bff;
+  padding: 14px;
+  margin-top: 14px;
+  background: linear-gradient(135deg, #d4af37, #b8860b);
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #fff;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
+/* Separador */
 .or {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   font-weight: 500;
-  color: #666;
+  color: #eee;
+  position: relative;
 }
 
-.social-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+.or::before,
+.or::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.btn-social {
-  flex: 1;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: transform 0.2s;
+.or::before {
+  left: 0;
 }
 
-.btn-social:hover {
-  transform: scale(1.05);
+.or::after {
+  right: 0;
 }
 
+/* Botón Google */
 .btn-social.google {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
   background: #db4437;
   color: white;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
-.btn-social.facebook {
-  background: #1877f2;
-  color: white;
+.btn-social.google:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(219, 68, 55, 0.5);
 }
 
-.alert-error {
-  background: #f8d7da;
-  color: #842029;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
+/* Links */
 .forgot,
 .register {
   display: block;
   margin-top: 1rem;
-  color: #007bff;
+  color: #d4af37;
   text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
 .forgot:hover,
 .register:hover {
+  color: #fff;
   text-decoration: underline;
 }
