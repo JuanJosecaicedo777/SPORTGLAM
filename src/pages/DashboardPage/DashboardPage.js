@@ -1,42 +1,55 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Card, Button, Form, Modal } from "react-bootstrap"; 
+import { Container, Card, Button, Modal, Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DashboardPage.css";
 
+// 🔹 Importa los íconos necesarios para el encabezado
+import { FaShoppingCart, FaUserCircle, FaSearch, FaBars } from 'react-icons/fa';
+
 // 🔹 Imágenes de productos destacados
-import camisetaImg from "../assets/nacional.webp";
-import zapatillasImg from "../assets/adidas mujer.avif";
-import rolexImg from "../assets/rolex.webp";
+import TenisImg from "../assets/adidas-campus.webp";
+import RelojImg from "../assets/reloj-invicta.webp";
+import CamisetaImg from "../assets/Camiseta-adidas hombre.webp";
+
+// 🔹 Importa las imágenes para el carrusel
+import bannerZapatillasAzules from "../assets/adidas-azules.jpg"; 
+import bannerPromocion from "../assets/rolex-oyster.webp"; 
+import bannerNuevoProducto from "../assets/nike-air.jpg"; 
+
 
 // 🔹 Productos destacados 
 const featuredProducts = [
   {
     id: 1,
-    name: "Camiseta de fútbol Nacional",
-    image: camisetaImg,
+    name: "Tenis Adidas Campus",
+    image: TenisImg,
     price: 120000,
-    description: "Camiseta oficial del Atlético Nacional, edición 2025."
+    description: "Tenis clásicos edición 2025."
   },
   {
     id: 2,
-    name: "Zapatos Adidas Mujer",
-    image: zapatillasImg,
+    name: "Reloj Invicta",
+    image: RelojImg,
     price: 230000,
-    description: "Zapatillas Adidas originales, cómodas y resistentes."
+    description: "Reloj de lujo para hombre invicta pro."
   },
   {
     id: 3,
-    name: "Reloj Rolex Caballero",
-    image: rolexImg,
+    name: "Camiseta deportiva Adidas",
+    image: CamisetaImg,
     price: 185000,
-    description: "Reloj de lujo Rolex, edición exclusiva para caballeros."
+    description: "Camiseta Own the Run 2025."
   },
 ];
+
+// 🔹 Colores para el carrusel, que corresponden a cada imagen
+const carouselColors = ['#6489baff', '#afac86ff', '#993425']; 
 
 const DashboardPage = ({ agregarCarrito }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState(carouselColors[0]);
   const navigate = useNavigate();
 
   const handleSelectProduct = (product) => {
@@ -49,55 +62,102 @@ const DashboardPage = ({ agregarCarrito }) => {
     setShowModal(false);
   };
 
+  // 🔹 Función para cambiar el color de fondo
+  const handleSlideSelect = (selectedIndex) => {
+    setBackgroundColor(carouselColors[selectedIndex]);
+  };
+
+
   return (
     <div className="dashboard-container">
-      {/* 🔹 Encabezado */}
-      <header className="store-header text-center py-3">
-        <h1 className="brand-title">SportGlam</h1>
-        <p className="brand-subtitle">Tu tienda de confianza</p>
-      </header>
-
-      {/* 🔹 Barra búsqueda + categorías */}
-      <div className="top-bar shadow-sm py-2 px-3 d-flex align-items-center justify-content-between">
-        <Form className="d-flex search-bar">
+      {/* 🔹 ENCABEZADO MODERNO */}
+      <header className="header-container-new">
+        <div className="header-logo-new">
+          <h1 className="brand-title-new">SportGlam</h1>
+        </div>
+        <div className="header-search-bar-new">
+          <FaSearch className="search-icon-new" />
           <input
             type="search"
-            placeholder="Buscar productos.."
-            className="form-control me-2"
-            aria-label="Search"
+            placeholder="Buscar productos..."
+            className="search-input-new"
           />
-          <Button variant="outline-success">Buscar</Button>
-        </Form>
-
-        <div className="categories d-flex">
-          <a href="#hombre">HOMBRE</a>
-          <a href="#mujer">MUJER</a>
-          <a href="#marcas">MARCAS</a>
-          <a href="#deportes">DEPORTES</a>
-          <a href="#salir">SALIR</a>
         </div>
-      </div>
+        <div className="header-icons-new">
+          <a href="/login" className="icon-link-new">
+            <FaUserCircle />
+          </a>
+          <a href="/carrito" className="icon-link-new">
+            <FaShoppingCart />
+          </a>
+          <button className="icon-link-new menu-toggle-btn">
+            <FaBars />
+          </button>
+        </div>
+      </header>
 
-      {/* 🔹 Productos Destacados */}
+      {/* 🔹 CARRUSEL DE IMÁGENES */}
+      <Container 
+        fluid 
+        className="carousel-container-wrapper" 
+        style={{ backgroundColor, transition: 'background-color 0.5s ease' }}
+      >
+        <Carousel 
+          className="carousel-custom" 
+          onSelect={handleSlideSelect} 
+          interval={3000}
+        >
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src={bannerZapatillasAzules}
+              alt="Zapatillas Adidas Azules"
+            />
+            <Carousel.Caption className="carousel-caption-custom">
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src={bannerPromocion}
+              alt="Promoción Especial"
+            />
+            <Carousel.Caption className="carousel-caption-custom">
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src={bannerNuevoProducto}
+              alt="Lanzamiento"
+            />
+            <Carousel.Caption className="carousel-caption-custom">
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </Container>
+
+      {/* 🔹 PRODUCTOS DESTACADOS ALINEADOS */}
       <Container className="mt-4">
         <h2 className="text-center mb-4">Productos Destacados</h2>
-        <Row>
+        <div className="products-grid">
           {featuredProducts.map((product) => (
-            <Col key={product.id} md={4} sm={6} xs={12} className="mb-4">
-              <Card 
+            <div key={product.id} className="product-item">
+              <Card
                 className={`product-card shadow-sm ${selectedProduct?.id === product.id ? "border-success" : ""}`}
                 onClick={() => handleSelectProduct(product)}
                 style={{ cursor: "pointer" }}
               >
                 <Card.Img variant="top" src={product.image} alt={product.name} />
                 <Card.Body>
-                  <Card.Title>{product.name}</Card.Title>
-                  <p className="price">${product.price.toLocaleString()}</p>
+                  <Card.Title className="product-title-new">{product.name}</Card.Title>
+                  <p className="price-new">${product.price.toLocaleString()}</p>
                   <div className="d-flex flex-column gap-2">
                     <Button
                       variant="success"
+                      className="add-to-cart-btn-new"
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                         agregarCarrito(product);
                       }}
                     >
@@ -106,9 +166,9 @@ const DashboardPage = ({ agregarCarrito }) => {
                   </div>
                 </Card.Body>
               </Card>
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       </Container>
 
       {/* 🔹 Modal para detalles */}
@@ -118,9 +178,9 @@ const DashboardPage = ({ agregarCarrito }) => {
             <Modal.Title>{selectedProduct.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img 
-              src={selectedProduct.image} 
-              alt={selectedProduct.name} 
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
               className="img-fluid mb-3 rounded"
             />
             <p>{selectedProduct.description}</p>
