@@ -1,108 +1,132 @@
-/* 🔹 ESTILOS GENERALES Y FUENTES */
-
+/* 🔹 ESTILOS GENERALES */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f2f5;
+  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 🔹 ENCABEZADO MODERNO */
+/* 🔹 ENCABEZADO */
 .header-container-new {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1a1a1a;
   color: #fff;
-  padding: 1rem 3rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 1020;
+  z-index: 1000;
 }
 
 .header-logo-new .brand-title-new {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .header-search-bar-new {
   position: relative;
   flex-grow: 1;
-  max-width: 500px;
+  max-width: 450px;
   margin: 0 2rem;
 }
 
 .search-input-new {
   width: 100%;
-  padding: 0.75rem 1.5rem 0.75rem 3rem;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 25px;
   background-color: #333;
   color: #fff;
   font-size: 1rem;
-  transition: all 0.3s ease;
 }
 
 .search-input-new:focus {
   background-color: #444;
-  box-shadow: 0 0 0 2px #5a5a5a;
   outline: none;
+  box-shadow: 0 0 0 2px #666;
 }
 
 .search-input-new::placeholder {
-  color: #888;
+  color: #aaa;
 }
 
 .search-icon-new {
   position: absolute;
-  left: 1rem;
+  left: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #888;
+  color: #aaa;
+  font-size: 1rem;
 }
 
+/* 🔹 ICONOS HEADER */
 .header-icons-new {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .icon-link-new {
+  background: none;
+  border: none;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .icon-link-new:hover {
-  color: #007bff;
+  color: gold;
 }
 
-.menu-toggle-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
+/* 🔹 MENU DESPLEGABLE */
+.menu-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #2c2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+.menu-dropdown ul {
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-/* 🔹 CARRUSEL REFINADO */
+.menu-dropdown ul li {
+  margin: 10px 0;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+}
+
+.menu-dropdown ul li:hover {
+  color: gold;
+}
+
+/* 🔹 CARRUSEL */
 .carousel-container-wrapper {
-  padding: 40px 0;
+  padding: 30px 0;
 }
 
 .carousel-custom {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-image {
-  height: 500px;
+  height: 450px;
   object-fit: cover;
 }
 
@@ -116,75 +140,88 @@ h2.text-center {
 .products-grid {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 20px 0;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap; /* ✅ cambio: permite varias filas */
 }
 
 .product-item {
-  flex-shrink: 0;
-  width: 320px;
+  flex: 1 1 280px;
+  max-width: 300px;
+  min-width: 250px;
+  display: flex;
 }
 
 .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 400px; 
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .product-card .card-img-top {
   width: 100%;
-  height: 300px;
+  height: 220px; 
   object-fit: cover;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-title-new {
   font-weight: 600;
   color: #333;
+  margin: 10px 0;
 }
 
 .price-new {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #e74c3c;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .add-to-cart-btn-new {
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
   background-color: #27ae60;
-  border-color: #27ae60;
+  border: none;
   transition: background-color 0.3s ease;
 }
 
 .add-to-cart-btn-new:hover {
   background-color: #2ecc71;
-  border-color: #2ecc71;
 }
 
 /* 🔹 PIE DE PÁGINA */
 .store-footer {
-  background-color: #2c3e50;
+  background-color: #252a2e;
   color: #fff;
   padding: 1rem 0;
+  text-align: center;
 }
 
-/* Media Queries para responsividad */
+/* 🔹 RESPONSIVE */
 @media (max-width: 768px) {
   .header-container-new {
     flex-wrap: wrap;
     justify-content: center;
     padding: 1rem;
-    height: auto;
   }
 
   .header-search-bar-new {
@@ -195,22 +232,19 @@ h2.text-center {
 
   .header-icons-new {
     order: 2;
-    margin-left: auto;
   }
 
   .products-grid {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    overflow-x: hidden;
+    flex-direction: column;
+    align-items: center;
   }
 
   .product-item {
     width: 100%;
     max-width: 320px;
-    margin: auto;
   }
 
   .carousel-image {
-    height: 300px;
+    height: 280px;
   }
 }
