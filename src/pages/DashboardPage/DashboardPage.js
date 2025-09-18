@@ -8,17 +8,17 @@ import "./DashboardPage.css";
 // 🔹 Íconos
 import { FaShoppingCart, FaUserCircle, FaSearch, FaBars } from "react-icons/fa";
 
-// 🔹 Imágenes de productos destacados (corrigiendo rutas)
-import tenisImg from "../assets/adidas-campus.webp";
-import relojImg from "../assets/reloj-invicta.webp";
-import camisetaImg from "../assets/camiseta-adidas hombre.webp";
+// 🔹 Imágenes de productos destacados (rutas corregidas)
+import tenisImg from "../../assets/adidas-campus.webp";
+import relojImg from "../../assets/reloj-invicta.webp";
+import camisetaImg from "../../assets/camiseta-adidas-hombre.webp";
 
 // 🔹 Imágenes para el carrusel
-import bannerZapatillasAzules from "../assets/adidas-azules.jpg";
-import bannerPromocion from "../assets/rolex-oyster.webp";
-import bannerNuevoProducto from "../assets/nike-air.jpg";
+import bannerZapatillasAzules from "../../assets/adidas-azules.jpg";
+import bannerPromocion from "../../assets/rolex-oyster.webp";
+import bannerNuevoProducto from "../../assets/nike-air.jpg";
 
-// Importar contexto del carrito (ruta corregida)
+// 🔹 Importar contexto del carrito
 import { CartContext } from "../../contexts/CartContext";
 
 // 🔹 Productos destacados
@@ -35,7 +35,7 @@ const featuredProducts = [
     name: "Reloj Invicta",
     image: relojImg,
     price: 230000,
-    description: "Reloj de lujo para hombre invicta pro.",
+    description: "Reloj de lujo para hombre Invicta Pro.",
   },
   {
     id: 3,
@@ -56,10 +56,9 @@ const DashboardPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  //  Obtener funciones del carrito desde el contexto
+  // 🔹 Funciones del carrito desde contexto
   const { agregarCarrito } = useContext(CartContext);
 
-  // 🔹 Seleccionar producto (abre modal)
   const handleSelectProduct = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
@@ -70,17 +69,12 @@ const DashboardPage = () => {
     setShowModal(false);
   };
 
-  // 🔹 Cambiar color de fondo al cambiar slide
   const handleSlideSelect = (selectedIndex) => {
     setBackgroundColor(carouselColors[selectedIndex]);
   };
 
-  // 🔹 Toggle menú
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  // 🔹 Navegar y cerrar menú
   const handleNavigate = (path) => {
     navigate(path);
     setMenuOpen(false);
@@ -88,7 +82,7 @@ const DashboardPage = () => {
 
   return (
     <div className="dashboard-container">
-      {/* 🔹 ENCABEZADO */}
+      {/* ENCABEZADO */}
       <header className="header-container-new">
         <div className="header-logo-new">
           <h1 className="brand-title-new">SportGlam</h1>
@@ -102,16 +96,10 @@ const DashboardPage = () => {
           />
         </div>
         <div className="header-icons-new">
-          <button
-            className="icon-link-new"
-            onClick={() => handleNavigate("/login")}
-          >
+          <button className="icon-link-new" onClick={() => handleNavigate("/login")}>
             <FaUserCircle />
           </button>
-          <button
-            className="icon-link-new"
-            onClick={() => handleNavigate("/cart")}
-          >
+          <button className="icon-link-new" onClick={() => handleNavigate("/cart")}>
             <FaShoppingCart />
           </button>
           <button className="icon-link-new menu-toggle-btn" onClick={toggleMenu}>
@@ -119,7 +107,7 @@ const DashboardPage = () => {
           </button>
         </div>
 
-        {/* 🔹 MENÚ DESPLEGABLE */}
+        {/* MENÚ DESPLEGABLE */}
         {menuOpen && (
           <div className="menu-dropdown">
             <ul>
@@ -133,17 +121,13 @@ const DashboardPage = () => {
         )}
       </header>
 
-      {/* 🔹 CARRUSEL */}
+      {/* CARRUSEL */}
       <Container
         fluid
         className="carousel-container-wrapper"
         style={{ backgroundColor, transition: "background-color 0.5s ease" }}
       >
-        <Carousel
-          className="carousel-custom"
-          onSelect={handleSlideSelect}
-          interval={3000}
-        >
+        <Carousel className="carousel-custom" onSelect={handleSlideSelect} interval={3000}>
           <Carousel.Item>
             <img
               className="d-block w-100 carousel-image"
@@ -168,7 +152,7 @@ const DashboardPage = () => {
         </Carousel>
       </Container>
 
-      {/* 🔹 PRODUCTOS DESTACADOS */}
+      {/* PRODUCTOS DESTACADOS */}
       <Container className="mt-4">
         <h2 className="text-center mb-4">Productos Destacados</h2>
         <div className="products-grid">
@@ -181,22 +165,18 @@ const DashboardPage = () => {
               >
                 <Card.Img variant="top" src={product.image} alt={product.name} />
                 <Card.Body>
-                  <Card.Title className="product-title-new">
-                    {product.name}
-                  </Card.Title>
+                  <Card.Title className="product-title-new">{product.name}</Card.Title>
                   <p className="price-new">${product.price.toLocaleString()}</p>
-                  <div className="d-flex flex-column gap-2">
-                    <Button
-                      variant="success"
-                      className="add-to-cart-btn-new"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        agregarCarrito(product);
-                      }}
-                    >
-                      Agregar al carrito
-                    </Button>
-                  </div>
+                  <Button
+                    variant="success"
+                    className="add-to-cart-btn-new"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      agregarCarrito(product);
+                    }}
+                  >
+                    Agregar al carrito
+                  </Button>
                 </Card.Body>
               </Card>
             </div>
@@ -204,7 +184,7 @@ const DashboardPage = () => {
         </div>
       </Container>
 
-      {/* 🔹 MODAL PRODUCTO */}
+      {/* MODAL PRODUCTO */}
       {selectedProduct && (
         <Modal show={showModal} onHide={handleCloseModal} centered>
           <Modal.Header closeButton>
@@ -225,17 +205,14 @@ const DashboardPage = () => {
             <Button variant="secondary" onClick={handleCloseModal}>
               Cerrar
             </Button>
-            <Button
-              variant="success"
-              onClick={() => agregarCarrito(selectedProduct)}
-            >
+            <Button variant="success" onClick={() => agregarCarrito(selectedProduct)}>
               Agregar al carrito
             </Button>
           </Modal.Footer>
         </Modal>
       )}
 
-      {/* 🔹 FOOTER */}
+      {/* FOOTER */}
       <footer className="store-footer text-center mt-4 py-3">
         <p>SportGlam</p>
       </footer>

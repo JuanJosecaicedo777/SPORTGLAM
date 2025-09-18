@@ -1,9 +1,10 @@
+// src/pages/LoginPage/LoginPage.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import Swal from "sweetalert2";
 
-// 🔹 Importa Firebase
+// 🔹 Firebase
 import { auth, googleProvider } from "../../Firebase/Firebase";
 import { signInWithPopup } from "firebase/auth";
 
@@ -11,9 +12,10 @@ function Login() {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Para evitar múltiples clicks
   const navigate = useNavigate();
 
-  // 🔹 Login manual con usuario fijo (demo)
+  // 🔹 Login manual con usuario demo
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -29,14 +31,18 @@ function Login() {
 
   // 🔹 Login con Google
   const handleGoogleLogin = async () => {
+    if (loading) return; // Evita abrir múltiples popups
+    setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       Swal.fire("Bienvenido", `Hola ${user.displayName}`, "success");
-      navigate("/dashboard"); // 🔹 Redirige al Dashboard
+      navigate("/dashboard"); // Redirige al Dashboard
     } catch (err) {
       console.error("Error en Google Login:", err);
       Swal.fire("Error", "No se pudo iniciar sesión con Google.", "error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -70,8 +76,13 @@ function Login() {
 
         <p className="or">O continúa con:</p>
         <div className="social-buttons">
-          {/* 🔹 Botón Google funcional */}
-          <button type="button" className="btn-social google" onClick={handleGoogleLogin}>
+          {/* 🔹 Botón Google */}
+          <button
+            type="button"
+            className="btn-social google"
+            onClick={handleGoogleLogin}
+            disabled={loading}
+          >
             <i className="fab fa-google"></i> Google
           </button>
         </div>
