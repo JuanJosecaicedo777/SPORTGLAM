@@ -1,21 +1,60 @@
+// src/pages/ProductosPage.js
+import React, { useContext } from "react";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { CartContext } from "../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
+import "./ProductosPage.css";
+
 function ProductosPage() {
+  const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
+
   const productos = [
-    { id: 1, nombre: "Camiseta deportiva", precio: 25 },
-    { id: 2, nombre: "Zapatillas running", precio: 80 },
-    { id: 3, nombre: "Gorra", precio: 15 },
+    { id: 1, name: "Tenis Adidas Campus", price: 120000, img: "/IMG/tenis.jpg" },
+    { id: 2, name: "Reloj Invicta", price: 230000, img: "/IMG/reloj.jpg" },
+    { id: 3, name: "Camiseta deportiva Adidas", price: 185000, img: "/IMG/camiseta.jpg" },
   ];
 
+  const handleAddToCart = (producto) => {
+    addToCart(producto);
+    navigate("/cart");
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h1 style={{ color: "#1f1f1f" }}>Productos</h1>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {productos.map((p) => (
-          <li key={p.id} style={{ margin: "10px 0", padding: "10px", border: "1px solid #ddd", borderRadius: "5px" }}>
-            {p.nombre} - <b>${p.precio}</b>
-          </li>
+    <Container className="my-5">
+      {/* 🔹 Botón Regresar */}
+      <Button className="back-button mb-3" onClick={() => navigate(-1)}>
+        ⬅ Regresar
+      </Button>
+
+      <h1 className="text-center mb-4 productos-title">🛍️ Nuestros Productos</h1>
+      <Row>
+        {productos.map((producto) => (
+          <Col md={4} sm={6} xs={12} key={producto.id} className="mb-4">
+            <Card className="producto-card h-100 text-center">
+              <Card.Img
+                variant="top"
+                src={producto.img}
+                alt={producto.name}
+                className="producto-img"
+              />
+              <Card.Body>
+                <Card.Title>{producto.name}</Card.Title>
+                <Card.Text className="precio">
+                  ${producto.price.toLocaleString()}
+                </Card.Text>
+                <Button
+                  className="btn-agregar"
+                  onClick={() => handleAddToCart(producto)}
+                >
+                  Agregar al carrito
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </ul>
-    </div>
+      </Row>
+    </Container>
   );
 }
 

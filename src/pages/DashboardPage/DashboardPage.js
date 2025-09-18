@@ -8,39 +8,39 @@ import "./DashboardPage.css";
 // 🔹 Íconos
 import { FaShoppingCart, FaUserCircle, FaSearch, FaBars } from "react-icons/fa";
 
-// 🔹 Imágenes de productos destacados
-import TenisImg from "../assets/adidas-campus.webp";
-import RelojImg from "../assets/reloj-invicta.webp";
-import CamisetaImg from "../assets/Camiseta-adidas hombre.webp";
+// 🔹 Imágenes de productos destacados (corrigiendo rutas)
+import tenisImg from "../assets/adidas-campus.webp";
+import relojImg from "../assets/reloj-invicta.webp";
+import camisetaImg from "../assets/camiseta-adidas hombre.webp";
 
 // 🔹 Imágenes para el carrusel
 import bannerZapatillasAzules from "../assets/adidas-azules.jpg";
 import bannerPromocion from "../assets/rolex-oyster.webp";
 import bannerNuevoProducto from "../assets/nike-air.jpg";
 
-// ✅ Importar contexto del carrito (ruta corregida)
-import { CartContext } from "../contexts/CartContext";
+// Importar contexto del carrito (ruta corregida)
+import { CartContext } from "../../contexts/CartContext";
 
 // 🔹 Productos destacados
 const featuredProducts = [
   {
     id: 1,
     name: "Tenis Adidas Campus",
-    image: TenisImg,
+    image: tenisImg,
     price: 120000,
     description: "Tenis clásicos edición 2025.",
   },
   {
     id: 2,
     name: "Reloj Invicta",
-    image: RelojImg,
+    image: relojImg,
     price: 230000,
     description: "Reloj de lujo para hombre invicta pro.",
   },
   {
     id: 3,
     name: "Camiseta deportiva Adidas",
-    image: CamisetaImg,
+    image: camisetaImg,
     price: 185000,
     description: "Camiseta Own the Run 2025.",
   },
@@ -56,7 +56,7 @@ const DashboardPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Obtener funciones del carrito desde el contexto
+  //  Obtener funciones del carrito desde el contexto
   const { agregarCarrito } = useContext(CartContext);
 
   // 🔹 Seleccionar producto (abre modal)
@@ -190,7 +190,7 @@ const DashboardPage = () => {
                       variant="success"
                       className="add-to-cart-btn-new"
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                         agregarCarrito(product);
                       }}
                     >

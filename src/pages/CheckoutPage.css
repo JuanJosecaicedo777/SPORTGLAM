@@ -1,0 +1,63 @@
+/* 🔹 Tarjetas del checkout */
+.checkout-card {
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+/* 🔹 Contenedor de logos */
+.checkout-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+/* 🔹 Cada opción (logo + texto) */
+.checkout-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+  text-align: center;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #f9f9f9;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+/* Hover: efecto de elevación */
+.checkout-option:hover {
+  transform: scale(1.05);
+  border-color: #ccc;
+  background: #f1f1f1;
+}
+
+/* 🔹 Imagen de los logos */
+.checkout-option img {
+  width: 90px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* 🔹 Texto debajo del logo */
+.checkout-option p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+/* 🔹 Estado seleccionado */
+.checkout-option.selected {
+  border-color: #28a745;
+  background: #e9fbe9;
+  box-shadow: 0 0 12px rgba(40, 167, 69, 0.3);
+  transform: scale(1.07);
+}

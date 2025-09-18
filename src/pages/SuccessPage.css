@@ -1,0 +1,11 @@
+.success-card {
+  border-radius: 12px;
+  background: #fff;
+}
+
+.product-img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px auto;
+}

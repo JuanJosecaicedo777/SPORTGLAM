@@ -7,11 +7,13 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import CartPage from "./pages/CartPage/CartPage"; 
+import CartPage from "./pages/CartPage";
 import ProductosPage from "./pages/ProductosPage";
 import CategoriasPage from "./pages/CategoriasPage";
 import ContactoPage from "./pages/ContactoPage";
 import AboutPage from "./pages/AboutPage";
+import CheckoutPage from "./pages/CheckoutPage"; 
+import SuccessPage from "./pages/SuccessPage"; // ✅ Nueva página
 
 function App() {
   return (
@@ -29,8 +31,10 @@ function App() {
           {/* Rutas privadas */}
           <Route path="/dashboard" element={<DashboardPage />} />
 
-          {/* Carrito */}
+          {/* Carrito y pago */}
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} /> 
+          <Route path="/success" element={<SuccessPage />} /> {/* ✅ Nueva ruta */}
 
           {/* Otras páginas */}
           <Route path="/productos" element={<ProductosPage />} />
