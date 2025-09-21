@@ -12,7 +12,7 @@ function Login() {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Para evitar múltiples clicks
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   // 🔹 Login manual con usuario demo
@@ -31,13 +31,13 @@ function Login() {
 
   // 🔹 Login con Google
   const handleGoogleLogin = async () => {
-    if (loading) return; // Evita abrir múltiples popups
+    if (loading) return; 
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       Swal.fire("Bienvenido", `Hola ${user.displayName}`, "success");
-      navigate("/dashboard"); // Redirige al Dashboard
+      navigate("/dashboard"); 
     } catch (err) {
       console.error("Error en Google Login:", err);
       Swal.fire("Error", "No se pudo iniciar sesión con Google.", "error");
@@ -49,7 +49,10 @@ function Login() {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-box">
-        <h2 className="login-title">SportGlam</h2>
+        
+        {/* 🔹 Título estilo logo */}
+        <h2 className="login-title">SPORTGLAM</h2>
+
         {error && <div className="alert-error">{error}</div>}
 
         <input

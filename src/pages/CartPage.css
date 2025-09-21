@@ -1,0 +1,60 @@
+/* Fondo del card */
+.cart-card {
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+/* Título elegante */
+.cart-title {
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Tabla */
+.cart-table th {
+  background-color: #2c3e50 !important;
+  color: #fff !important;
+  font-size: 16px;
+}
+
+.cart-table td {
+  font-size: 15px;
+  padding: 12px;
+}
+
+/* Botón eliminar */
+.btn-delete {
+  transition: all 0.2s ease;
+}
+.btn-delete:hover {
+  transform: scale(1.05);
+  background-color: #c82333 !important;
+  color: white !important;
+}
+
+/* Botón vaciar */
+.btn-clear {
+  transition: all 0.2s ease;
+}
+.btn-clear:hover {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+/* Botón pagar */
+.btn-pay {
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-pay:hover {
+  background-color: #28a745 !important;
+  transform: scale(1.05);
+}
+
+/* Botón volver */
+.btn-back {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
