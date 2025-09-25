@@ -2,87 +2,101 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  background: #f5f5f5;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   padding: 20px;
 }
 
 .contacto-card {
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
   width: 100%;
   text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-.contacto-card h1 {
+.contacto-title {
+  font-size: 28px;
   color: #1f1f1f;
   margin-bottom: 10px;
 }
 
-.contacto-card p {
+.contacto-subtitle {
+  font-size: 16px;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .contacto-form {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  gap: 15px;
 }
 
 .contacto-form input,
 .contacto-form textarea {
-  margin: 8px 0;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 15px;
   outline: none;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-.contacto-form textarea {
-  resize: vertical;
-  min-height: 100px;
+  transition: all 0.3s ease;
 }
 
 .contacto-form input:focus,
 .contacto-form textarea:focus {
-  border-color: #1f1f1f;
-  box-shadow: 0 0 5px rgba(31, 31, 31, 0.3);
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
 }
 
-.contacto-form button {
-  background: #1f1f1f;
-  color: #fff;
+.contacto-form textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.btn-enviar {
+  background: #6c63ff;
+  color: white;
   padding: 12px;
   border: none;
-  border-radius: 6px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+  border-radius: 12px;
   font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.contacto-form button:hover {
-  background: #333;
+.btn-enviar:hover {
+  background: #5548d6;
+  transform: translateY(-2px);
 }
 
 .back-button {
-  background: #aaa;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
   margin-top: 15px;
-  cursor: pointer;
-  transition: 0.3s;
+  background: transparent;
+  border: 2px solid #6c63ff;
+  color: #6c63ff;
+  padding: 10px 18px;
+  border-radius: 12px;
   font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .back-button:hover {
-  background: #888;
+  background: #6c63ff;
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

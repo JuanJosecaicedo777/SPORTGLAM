@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
-// 👇 Tu configuración de Firebase
+//  Tu configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAS4fec2ImAYQzmoS1fOvhYJQ8FwtY_oJo",
   authDomain: "sportglam-c6f10.firebaseapp.com",

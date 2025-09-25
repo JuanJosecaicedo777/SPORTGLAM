@@ -8,19 +8,20 @@ function ContactoPage() {
   return (
     <div className="contacto-container">
       <div className="contacto-card">
-        <h1>Contacto</h1>
-        <p>Si tienes dudas, escríbenos:</p>
+        <h1 className="contacto-title">Contáctanos</h1>
+        <p className="contacto-subtitle">
+          Si tienes dudas o sugerencias, completa el formulario:
+        </p>
         <form className="contacto-form">
           <input type="text" placeholder="Tu nombre" />
           <input type="email" placeholder="Tu correo" />
           <textarea placeholder="Tu mensaje"></textarea>
-          <button type="submit">Enviar</button>
+          <button type="submit" className="btn-enviar">
+            Enviar
+          </button>
         </form>
-        <button
-          className="back-button"
-          onClick={() => navigate(-1)}
-        >
-          Atrás
+        <button className="back-button" onClick={() => navigate(-1)}>
+          ← Atrás
         </button>
       </div>
     </div>

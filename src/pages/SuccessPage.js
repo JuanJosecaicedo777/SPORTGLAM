@@ -105,12 +105,24 @@ function SuccessPage() {
 
         <p><strong>Total Pagado:</strong> ${total.toLocaleString()}</p>
 
-        <Button variant="primary" className="m-2" onClick={generarFacturaPDF}>
-          📄 Descargar Factura
-        </Button>
-        <Button variant="success" className="m-2" onClick={() => navigate("/")}>
-          🏠 Volver al inicio
-        </Button>
+        {/* Botones más pequeños */}
+        <div className="d-flex justify-content-center gap-3 mt-3">
+          <Button
+            variant="primary"
+            onClick={generarFacturaPDF}
+            style={{ fontSize: "14px", padding: "8px 16px", minWidth: "180px" }}
+          >
+            📄 Descargar Factura
+          </Button>
+
+          <Button
+            variant="success"
+            onClick={() => navigate("/dashboard")}
+            style={{ fontSize: "14px", padding: "8px 16px", minWidth: "180px" }}
+          >
+            🏬 Volver a la tienda
+          </Button>
+        </div>
       </Card>
     </Container>
   );

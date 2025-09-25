@@ -5,7 +5,7 @@ import "./LoginPage.css";
 import Swal from "sweetalert2";
 
 // 🔹 Firebase
-import { auth, googleProvider } from "../../Firebase/Firebase";
+import { auth, googleProvider } from "../../firebase/firebase";
 import { signInWithPopup } from "firebase/auth";
 
 function Login() {

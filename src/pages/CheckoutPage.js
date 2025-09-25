@@ -94,19 +94,28 @@ function CheckoutPage() {
           </div>
         </Card>
 
-        {/* Botón confirmar */}
-        <Button variant="success" size="lg" className="w-100 fw-bold shadow-sm" onClick={handleConfirm}>
-          ✅ Confirmar y Pagar
-        </Button>
+        {/* Botones lado a lado */}
+        <div className="d-flex justify-content-center gap-3 mt-4 w-100">
+          <Button
+            variant="success"
+            size="lg"
+            className="fw-bold shadow"
+            style={{ minWidth: "220px", borderRadius: "10px" }}
+            onClick={handleConfirm}
+          >
+            ✅ Confirmar y Pagar
+          </Button>
 
-        {/* Botón volver */}
-        <Button
-          variant="outline-secondary"
-          className="mt-3 w-100 fw-bold"
-          onClick={() => navigate("/cart")}
-        >
-          ⬅️ Volver al carrito
-        </Button>
+          <Button
+            variant="outline-secondary"
+            size="lg"
+            className="fw-bold"
+            style={{ minWidth: "220px", borderRadius: "10px" }}
+            onClick={() => navigate("/cart")}
+          >
+            ⬅️ Volver al carrito
+          </Button>
+        </div>
       </div>
     </Container>
   );

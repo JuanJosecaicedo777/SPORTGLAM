@@ -13,7 +13,7 @@ import CategoriasPage from "./pages/CategoriasPage";
 import ContactoPage from "./pages/ContactoPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage"; 
-import SuccessPage from "./pages/SuccessPage"; // ✅ Nueva página
+import SuccessPage from "./pages/SuccessPage"; //  Nueva página
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           {/* Carrito y pago */}
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} /> 
-          <Route path="/success" element={<SuccessPage />} /> {/* ✅ Nueva ruta */}
+          <Route path="/success" element={<SuccessPage />} /> {/* Nueva ruta */}
 
           {/* Otras páginas */}
           <Route path="/productos" element={<ProductosPage />} />

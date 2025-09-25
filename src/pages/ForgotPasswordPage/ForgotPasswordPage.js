@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../Firebase/Firebase";
+import { auth } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 

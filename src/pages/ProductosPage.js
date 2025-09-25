@@ -5,14 +5,20 @@ import { CartContext } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import "./ProductosPage.css";
 
+// 🔹 Importar imágenes desde assets
+import tenisImg from "../assets/adidas-campus.webp";
+import relojImg from "../assets/rolex-hd.avif";
+import camisetaImg from "../assets/camiseta-nike-hombre.webp";
+
 function ProductosPage() {
   const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
+  // 🔹 Productos con imágenes importadas
   const productos = [
-    { id: 1, name: "Tenis Adidas Campus", price: 120000, img: "/IMG/tenis.jpg" },
-    { id: 2, name: "Reloj Invicta", price: 230000, img: "/IMG/reloj.jpg" },
-    { id: 3, name: "Camiseta deportiva Adidas", price: 185000, img: "/IMG/camiseta.jpg" },
+    { id: 1, name: "Tenis Adidas Campus", price: 120000, img: tenisImg },
+    { id: 2, name: "Reloj Invicta", price: 230000, img: relojImg },
+    { id: 3, name: "Camiseta deportiva Adidas", price: 185000, img: camisetaImg },
   ];
 
   const handleAddToCart = (producto) => {

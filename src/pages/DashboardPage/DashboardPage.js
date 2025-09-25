@@ -111,7 +111,7 @@ const DashboardPage = () => {
         {menuOpen && (
           <div className="menu-dropdown">
             <ul>
-              <li onClick={() => handleNavigate("/dashboard")}>Inicio</li>
+             
               <li onClick={() => handleNavigate("/productos")}>Productos</li>
               <li onClick={() => handleNavigate("/categorias")}>Categorías</li>
               <li onClick={() => handleNavigate("/contacto")}>Contacto</li>

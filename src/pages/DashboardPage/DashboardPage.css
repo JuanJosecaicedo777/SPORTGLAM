@@ -142,7 +142,7 @@ h2.text-center {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  flex-wrap: wrap; /* ✅ cambio: permite varias filas */
+  flex-wrap: wrap; 
 }
 
 .product-item {
