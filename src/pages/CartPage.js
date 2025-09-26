@@ -34,21 +34,25 @@ function CartPage() {
                   <th>#</th>
                   <th>Producto</th>
                   <th>Precio</th>
+                  <th>Cantidad</th>
                   <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
                 {cart.map((item, index) => (
-                  <tr key={index} className="text-center align-middle">
+                  <tr key={item.id || index} className="text-center align-middle">
                     <td>{index + 1}</td>
-                    <td className="fw-bold">{item.name}</td>
-                    <td className="text-success fw-semibold">${item.price.toLocaleString()}</td>
+                    <td className="fw-bold">{item.nombre || "Producto"}</td>
+                    <td className="text-success fw-semibold">
+                      ${item.precio ? item.precio.toLocaleString() : "0"}
+                    </td>
+                    <td>{item.cantidad || 1}</td>
                     <td>
                       <Button
                         variant="outline-danger"
                         size="sm"
                         className="btn-delete"
-                        onClick={() => removeFromCart(index)}
+                        onClick={() => removeFromCart(item.id)}
                       >
                         ❌ Eliminar
                       </Button>
@@ -58,11 +62,11 @@ function CartPage() {
               </tbody>
             </Table>
 
-            <div className="d-flex justify-content-between align-items-center mt-4">
+            <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
               <h3 className="fw-bold text-primary">
                 Total: <span className="text-success">${total.toLocaleString()}</span>
               </h3>
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-2 flex-wrap">
                 <Button variant="outline-warning" className="btn-clear" onClick={clearCart}>
                   🗑️ Vaciar carrito
                 </Button>
@@ -76,7 +80,11 @@ function CartPage() {
 
         {/* 🔹 Botón volver */}
         <div className="mt-4 text-center">
-          <Button variant="secondary" className="btn-back" onClick={() => navigate("/dashboard")}>
+          <Button
+            variant="secondary"
+            className="btn-back"
+            onClick={() => navigate("/dashboard")}
+          >
             ⬅️ Volver a la tienda
           </Button>
         </div>

@@ -13,7 +13,7 @@ import CategoriasPage from "./pages/CategoriasPage";
 import ContactoPage from "./pages/ContactoPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage"; 
-import SuccessPage from "./pages/SuccessPage"; //  Nueva página
+import SuccessPage from "./pages/SuccessPage";
 
 function App() {
   return (
@@ -34,15 +34,20 @@ function App() {
           {/* Carrito y pago */}
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} /> 
-          <Route path="/success" element={<SuccessPage />} /> {/* Nueva ruta */}
+          <Route path="/success" element={<SuccessPage />} /> 
+
+          {/* Productos */}
+          <Route path="/productos" element={<ProductosPage />} />           {/* Todos los productos */}
+          <Route path="/productos/:categoria" element={<ProductosPage />} /> {/* Productos por categoría */}
+
+          {/* Categorías */}
+          <Route path="/categorias" element={<CategoriasPage />} />
 
           {/* Otras páginas */}
-          <Route path="/productos" element={<ProductosPage />} />
-          <Route path="/categorias" element={<CategoriasPage />} />
           <Route path="/contacto" element={<ContactoPage />} />
           <Route path="/about" element={<AboutPage />} />
 
-          {/* Si no existe la ruta, redirige al login */}
+          {/* Ruta por defecto */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>

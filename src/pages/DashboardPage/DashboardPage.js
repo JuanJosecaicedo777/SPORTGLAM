@@ -80,6 +80,16 @@ const DashboardPage = () => {
     setMenuOpen(false);
   };
 
+  // 🔹 Función para agregar producto al carrito con formato correcto
+  const handleAddToCart = (product) => {
+    addToCart({
+      id: product.id,
+      nombre: product.name,
+      precio: product.price,
+      img: product.image,
+    });
+  };
+
   return (
     <div className="dashboard-container">
       {/* ENCABEZADO */}
@@ -171,7 +181,7 @@ const DashboardPage = () => {
                     className="add-to-cart-btn-new"
                     onClick={(e) => {
                       e.stopPropagation();
-                      addToCart(product); {/* ✅ ahora sí coincide */}
+                      handleAddToCart(product);
                     }}
                   >
                     Agregar al carrito
@@ -204,7 +214,10 @@ const DashboardPage = () => {
             <Button variant="secondary" onClick={handleCloseModal}>
               Cerrar
             </Button>
-            <Button variant="success" onClick={() => addToCart(selectedProduct)}>
+            <Button
+              variant="success"
+              onClick={() => handleAddToCart(selectedProduct)}
+            >
               Agregar al carrito
             </Button>
           </Modal.Footer>

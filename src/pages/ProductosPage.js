@@ -1,84 +1,63 @@
 // src/pages/ProductosPage.js
 import React, { useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { CartContext } from "../contexts/CartContext";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2"; // 🔹 Importar SweetAlert2
 import "./ProductosPage.css";
 
-// 🔹 Importar imágenes desde assets
-import tenisImg from "../assets/adidas-campus.webp";
-import relojImg from "../assets/rolex-hd.avif";
-import camisetaImg from "../assets/camiseta-nike-hombre.webp";
+// 🔹 Imágenes
+import camisaImg from "../assets/camiseta-puma-caballero.avif";
 import pantalonImg from "../assets/pantalon-adidas.webp";
-import gorraImg from "../assets/gorra-hombre.webp";
-import bolsoImg from "../assets/bolso-adidas.avif";
-import audifonosImg from "../assets/reloj-casio.jpg";
-import chaquetaImg from "../assets/chaqueta-mujer-puma.avif";
+import tenisImg from "../assets/zapatos-puma.webp";
+import botasImg from "../assets/zapatillas-nike run.webp";
+import gorraImg from "../assets/gafas-mujer.webp";
+import gafasImg from "../assets/gorra-hombre.webp";
+import rolexImg from "../assets/rolex-caballero.jpg";
+import casioImg from "../assets/reloj-caballero-casio.webp";
+
+// Todos los productos
+const allProducts = {
+  ropa: [
+    { id: 1, nombre: "Camiseta Puma Caballero", precio: 80000, img: camisaImg },
+    { id: 2, nombre: "Pantalón Adidas", precio: 120000, img: pantalonImg },
+  ],
+  calzado: [
+    { id: 3, nombre: "Tenis Puma", precio: 300000, img: tenisImg },
+    { id: 4, nombre: "Zapatos Run Nike", precio: 350000, img: botasImg },
+  ],
+  accesorios: [
+    { id: 5, nombre: "Gafas Mujer", precio: 60000, img: gorraImg },
+    { id: 6, nombre: "Gorra Nike", precio: 90000, img: gafasImg },
+  ],
+  relojes: [
+    { id: 7, nombre: "Rolex", precio: 350000, img: rolexImg },
+    { id: 8, nombre: "Casio", precio: 250000, img: casioImg },
+  ],
+};
 
 function ProductosPage() {
-  const { addToCart } = useContext(CartContext);
+  const { categoria } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
 
-  // 🔹 Productos con imágenes importadas
-  const productos = [
-    { id: 1, name: "Tenis Adidas Campus", price: 120000, img: tenisImg },
-    { id: 2, name: "Reloj Rolex", price: 230000, img: relojImg },
-    { id: 3, name: "Camiseta deportiva Nike", price: 185000, img: camisetaImg },
-    { id: 4, name: "Pantalón Adidas", price: 150000, img: pantalonImg },
-    { id: 5, name: "Gorra Nike Hombre", price: 85000, img: gorraImg },
-    { id: 6, name: "Bolso Adidas", price: 110000, img: bolsoImg },
-    { id: 7, name: "Reloj Casio", price: 320000, img: audifonosImg },
-    { id: 8, name: "Chaqueta Puma Mujer", price: 280000, img: chaquetaImg },
-  ];
-
-  const handleAddToCart = (producto) => {
-    addToCart(producto);
-
-    // 🔹 Popup con opciones
-    Swal.fire({
-      title: "✅ Producto agregado",
-      text: `"${producto.name}" se agregó al carrito`,
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonText: "Ir al carrito 🛒",
-      cancelButtonText: "Seguir comprando",
-      confirmButtonColor: "#6c63ff",
-      cancelButtonColor: "#aaa",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/cart"); // 🔹 Va al carrito
-      }
-    });
-  };
+  // Si no hay categoría, mostrar todos
+  const productos = categoria ? allProducts[categoria] : Object.values(allProducts).flat();
 
   return (
-    <Container className="my-5">
-      {/* 🔹 Botón Regresar */}
-      <Button className="back-button mb-3" onClick={() => navigate(-1)}>
-        ⬅ Regresar
-      </Button>
-
-      <h1 className="text-center mb-4 productos-title">🛍️ Nuestros Productos</h1>
+    <Container className="productos-container">
+      <button className="back-button" onClick={() => navigate(-1)}>← Regresar</button>
+      <h1 className="productos-title">
+        {categoria ? `Productos de ${categoria}` : "Todos los productos"}
+      </h1>
       <Row>
-        {productos.map((producto) => (
-          <Col md={4} sm={6} xs={12} key={producto.id} className="mb-4">
-            <Card className="producto-card h-100 text-center">
-              <Card.Img
-                variant="top"
-                src={producto.img}
-                alt={producto.name}
-                className="producto-img"
-              />
+        {productos?.map((p) => (
+          <Col key={p.id} md={4} className="mb-4">
+            <Card className="producto-card">
+              <Card.Img variant="top" src={p.img} className="producto-img" />
               <Card.Body>
-                <Card.Title>{producto.name}</Card.Title>
-                <Card.Text className="precio">
-                  ${producto.price.toLocaleString()}
-                </Card.Text>
-                <Button
-                  className="btn-agregar"
-                  onClick={() => handleAddToCart(producto)}
-                >
+                <Card.Title>{p.nombre}</Card.Title>
+                <Card.Text>${p.precio.toLocaleString()}</Card.Text>
+                <Button variant="dark" onClick={() => addToCart(p)}>
                   Agregar al carrito
                 </Button>
               </Card.Body>
