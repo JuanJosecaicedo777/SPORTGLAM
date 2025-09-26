@@ -8,7 +8,7 @@ import "./DashboardPage.css";
 // 🔹 Íconos
 import { FaShoppingCart, FaUserCircle, FaSearch, FaBars } from "react-icons/fa";
 
-// 🔹 Imágenes de productos destacados (rutas corregidas)
+// 🔹 Imágenes de productos destacados
 import tenisImg from "../../assets/adidas-campus.webp";
 import relojImg from "../../assets/reloj-invicta.webp";
 import camisetaImg from "../../assets/camiseta-adidas-hombre.webp";
@@ -57,7 +57,7 @@ const DashboardPage = () => {
   const navigate = useNavigate();
 
   // 🔹 Funciones del carrito desde contexto
-  const { agregarCarrito } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   const handleSelectProduct = (product) => {
     setSelectedProduct(product);
@@ -111,7 +111,6 @@ const DashboardPage = () => {
         {menuOpen && (
           <div className="menu-dropdown">
             <ul>
-             
               <li onClick={() => handleNavigate("/productos")}>Productos</li>
               <li onClick={() => handleNavigate("/categorias")}>Categorías</li>
               <li onClick={() => handleNavigate("/contacto")}>Contacto</li>
@@ -172,7 +171,7 @@ const DashboardPage = () => {
                     className="add-to-cart-btn-new"
                     onClick={(e) => {
                       e.stopPropagation();
-                      agregarCarrito(product);
+                      addToCart(product); {/* ✅ ahora sí coincide */}
                     }}
                   >
                     Agregar al carrito
@@ -205,7 +204,7 @@ const DashboardPage = () => {
             <Button variant="secondary" onClick={handleCloseModal}>
               Cerrar
             </Button>
-            <Button variant="success" onClick={() => agregarCarrito(selectedProduct)}>
+            <Button variant="success" onClick={() => addToCart(selectedProduct)}>
               Agregar al carrito
             </Button>
           </Modal.Footer>
