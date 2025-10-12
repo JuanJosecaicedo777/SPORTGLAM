@@ -54,6 +54,8 @@ const DashboardPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(carouselColors[0]);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); // Estado final de búsqueda
+  const [tempSearch, setTempSearch] = useState(""); // Estado temporal para escribir
   const navigate = useNavigate();
 
   // 🔹 Funciones del carrito desde contexto
@@ -80,7 +82,7 @@ const DashboardPage = () => {
     setMenuOpen(false);
   };
 
-  // 🔹 Función para agregar producto al carrito con formato correcto
+  // 🔹 Función para agregar producto al carrito
   const handleAddToCart = (product) => {
     addToCart({
       id: product.id,
@@ -89,6 +91,11 @@ const DashboardPage = () => {
       img: product.image,
     });
   };
+
+  // 🔹 Filtrar productos según búsqueda al dar Enter
+  const filteredProducts = featuredProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="dashboard-container">
@@ -99,11 +106,21 @@ const DashboardPage = () => {
         </div>
         <div className="header-search-bar-new">
           <FaSearch className="search-icon-new" />
-          <input
-            type="search"
-            placeholder="Buscar productos..."
-            className="search-input-new"
-          />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSearchQuery(tempSearch); // Actualiza la búsqueda solo al presionar Enter
+            }}
+          >
+            <input
+              type="search"
+              name="busqueda"
+              placeholder="Buscar productos..."
+              className="search-input-new"
+              value={tempSearch}
+              onChange={(e) => setTempSearch(e.target.value)}
+            />
+          </form>
         </div>
         <div className="header-icons-new">
           <button className="icon-link-new" onClick={() => handleNavigate("/login")}>
@@ -165,31 +182,35 @@ const DashboardPage = () => {
       <Container className="mt-4">
         <h2 className="text-center mb-4">Productos Destacados</h2>
         <div className="products-grid">
-          {featuredProducts.map((product) => (
-            <div key={product.id} className="product-item">
-              <Card
-                className="product-card shadow-sm"
-                onClick={() => handleSelectProduct(product)}
-                style={{ cursor: "pointer" }}
-              >
-                <Card.Img variant="top" src={product.image} alt={product.name} />
-                <Card.Body>
-                  <Card.Title className="product-title-new">{product.name}</Card.Title>
-                  <p className="price-new">${product.price.toLocaleString()}</p>
-                  <Button
-                    variant="success"
-                    className="add-to-cart-btn-new"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleAddToCart(product);
-                    }}
-                  >
-                    Agregar al carrito
-                  </Button>
-                </Card.Body>
-              </Card>
-            </div>
-          ))}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div key={product.id} className="product-item">
+                <Card
+                  className="product-card shadow-sm"
+                  onClick={() => handleSelectProduct(product)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <Card.Img variant="top" src={product.image} alt={product.name} />
+                  <Card.Body>
+                    <Card.Title className="product-title-new">{product.name}</Card.Title>
+                    <p className="price-new">${product.price.toLocaleString()}</p>
+                    <Button
+                      variant="success"
+                      className="add-to-cart-btn-new"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                      }}
+                    >
+                      Agregar al carrito
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))
+          ) : (
+            <p className="text-center">No se encontraron productos</p>
+          )}
         </div>
       </Container>
 
