@@ -11,7 +11,7 @@ function SuccessPage() {
   const location = useLocation();
   const { envio, pago, productos = [], total = 0 } = location.state || {};
 
-  // Logos de envíos
+  // 🔹 Logos de envíos
   const enviosLogos = {
     Servientrega: require("../assets/servientrega.jpg"),
     "Interrapidísimo": require("../assets/inter-rapidisimo.png"),
@@ -19,7 +19,7 @@ function SuccessPage() {
     Envia: require("../assets/envia.jpg"),
   };
 
-  // Logos de pagos
+  // 🔹 Logos de pagos
   const pagosLogos = {
     Efecty: require("../assets/efecty.png"),
     PSE: require("../assets/pse.png"),
@@ -32,15 +32,16 @@ function SuccessPage() {
     const doc = new jsPDF();
 
     doc.setFontSize(18);
-    doc.text("Factura Virtual", 14, 20);
+    doc.text("Factura Virtual - SportGlam", 14, 20);
     doc.setLineWidth(0.5);
     doc.line(14, 25, 196, 25);
 
     doc.setFontSize(12);
-    doc.text(`Método de Envío: ${envio}`, 14, 40);
-    doc.text(`Método de Pago: ${pago}`, 14, 50);
+    doc.text(`Método de Envío: ${envio || "No especificado"}`, 14, 40);
+    doc.text(`Método de Pago: ${pago || "No especificado"}`, 14, 50);
+    doc.text(`Fecha: ${new Date().toLocaleString()}`, 14, 60);
 
-    // 🔹 Construcción de la tabla con subtotal
+    // Tabla de productos
     const tablaProductos = productos.map((p, index) => {
       const nombre = p.name || p.nombre || "Producto";
       const cantidad = p.quantity || p.cantidad || 1;
@@ -52,12 +53,12 @@ function SuccessPage() {
         nombre,
         cantidad,
         `$${precio.toLocaleString()}`,
-        `$${subtotal.toLocaleString()}`
+        `$${subtotal.toLocaleString()}`,
       ];
     });
 
     autoTable(doc, {
-      startY: 65,
+      startY: 70,
       head: [["#", "Producto", "Cantidad", "Precio", "Subtotal"]],
       body: tablaProductos,
     });
@@ -66,18 +67,18 @@ function SuccessPage() {
     doc.text(`Total: $${total.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 15);
 
     doc.setFontSize(12);
-    doc.text("Gracias por tu compra en SportGlam", 14, doc.lastAutoTable.finalY + 30);
+    doc.text("Gracias por tu compra en SportGlam 💖", 14, doc.lastAutoTable.finalY + 30);
 
-    doc.save("factura.pdf");
+    doc.save("factura_sportglam.pdf");
   };
 
   return (
     <Container className="my-5 text-center">
-      <Card className="p-4 shadow">
+      <Card className="p-4 shadow-lg rounded-4">
         <h2>✅ ¡Compra Exitosa!</h2>
         <p>Tu pedido ha sido procesado correctamente.</p>
 
-        {/* Envío */}
+        {/* Mostrar datos reales */}
         {envio && (
           <div className="mb-3">
             <h5>🚚 Método de Envío:</h5>
@@ -90,7 +91,6 @@ function SuccessPage() {
           </div>
         )}
 
-        {/* Pago */}
         {pago && (
           <div className="mb-3">
             <h5>💳 Método de Pago:</h5>
@@ -103,14 +103,18 @@ function SuccessPage() {
           </div>
         )}
 
-        <p><strong>Total Pagado:</strong> ${total.toLocaleString()}</p>
+        <h5><strong>Total Pagado:</strong> ${total.toLocaleString()}</h5>
 
-        {/* Botones más pequeños */}
-        <div className="d-flex justify-content-center gap-3 mt-3">
+        {/* Botones de acción */}
+        <div className="d-flex justify-content-center gap-3 mt-4">
           <Button
             variant="primary"
             onClick={generarFacturaPDF}
-            style={{ fontSize: "14px", padding: "8px 16px", minWidth: "180px" }}
+            style={{
+              fontSize: "14px",
+              padding: "8px 16px",
+              minWidth: "180px",
+            }}
           >
             📄 Descargar Factura
           </Button>
@@ -118,7 +122,11 @@ function SuccessPage() {
           <Button
             variant="success"
             onClick={() => navigate("/dashboard")}
-            style={{ fontSize: "14px", padding: "8px 16px", minWidth: "180px" }}
+            style={{
+              fontSize: "14px",
+              padding: "8px 16px",
+              minWidth: "180px",
+            }}
           >
             🏬 Volver a la tienda
           </Button>

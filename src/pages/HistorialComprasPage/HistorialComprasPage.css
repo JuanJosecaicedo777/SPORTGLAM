@@ -1,0 +1,53 @@
+.historial-container {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.historial-card {
+  background-color: #fffaf3;
+  border: 1px solid #f8e5c2;
+  border-radius: 20px;
+}
+
+th {
+  background-color: #ffd76a;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.estado {
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.estado-entregado {
+  background-color: #c8f7c5;
+  color: #1a7d1a;
+}
+
+.estado-envio {
+  background-color: #ffe9a7;
+  color: #a67c00;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+button.btn-secondary {
+  background-color: #444;
+  border: none;
+  transition: 0.3s ease;
+}
+
+button.btn-secondary:hover {
+  background-color: #222;
+  transform: scale(1.05);
+}

@@ -1,8 +1,9 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-// 🔹 Configuración de Firebase de tu proyecto
+// 🔹 Configuración Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAS4fec2ImAYQzmoS1fOvhYJQ8FwtY_oJo",
   authDomain: "sportglam-c6f10.firebaseapp.com",
@@ -13,10 +14,10 @@ const firebaseConfig = {
   measurementId: "G-V3CRM1PGL3"
 };
 
-// Inicializar Firebase
+// 🔹 Inicialización
 const app = initializeApp(firebaseConfig);
-
-// Servicios que usas
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider();
+export default app;

@@ -54,8 +54,8 @@ const DashboardPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(carouselColors[0]);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // Estado final de búsqueda
-  const [tempSearch, setTempSearch] = useState(""); // Estado temporal para escribir
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tempSearch, setTempSearch] = useState("");
   const navigate = useNavigate();
 
   // 🔹 Funciones del carrito desde contexto
@@ -104,12 +104,13 @@ const DashboardPage = () => {
         <div className="header-logo-new">
           <h1 className="brand-title-new">SportGlam</h1>
         </div>
+
         <div className="header-search-bar-new">
           <FaSearch className="search-icon-new" />
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              setSearchQuery(tempSearch); // Actualiza la búsqueda solo al presionar Enter
+              setSearchQuery(tempSearch);
             }}
           >
             <input
@@ -122,6 +123,7 @@ const DashboardPage = () => {
             />
           </form>
         </div>
+
         <div className="header-icons-new">
           <button className="icon-link-new" onClick={() => handleNavigate("/login")}>
             <FaUserCircle />
@@ -134,7 +136,7 @@ const DashboardPage = () => {
           </button>
         </div>
 
-        {/* MENÚ DESPLEGABLE */}
+        {/* ✅ MENÚ DESPLEGABLE (actualizado con Historial de compras) */}
         {menuOpen && (
           <div className="menu-dropdown">
             <ul>
@@ -142,6 +144,7 @@ const DashboardPage = () => {
               <li onClick={() => handleNavigate("/categorias")}>Categorías</li>
               <li onClick={() => handleNavigate("/contacto")}>Contacto</li>
               <li onClick={() => handleNavigate("/about")}>Sobre Nosotros</li>
+              <li onClick={() => handleNavigate("/historial")}> Historial de Compras</li> 
             </ul>
           </div>
         )}
@@ -235,10 +238,7 @@ const DashboardPage = () => {
             <Button variant="secondary" onClick={handleCloseModal}>
               Cerrar
             </Button>
-            <Button
-              variant="success"
-              onClick={() => handleAddToCart(selectedProduct)}
-            >
+            <Button variant="success" onClick={() => handleAddToCart(selectedProduct)}>
               Agregar al carrito
             </Button>
           </Modal.Footer>

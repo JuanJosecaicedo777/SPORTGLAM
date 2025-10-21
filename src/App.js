@@ -15,6 +15,9 @@ import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage"; 
 import SuccessPage from "./pages/SuccessPage";
 
+// ✅ Nueva página: Historial de Compras
+import HistorialComprasPage from "./pages/HistorialComprasPage/HistorialComprasPage";
+
 function App() {
   return (
     <CartProvider>
@@ -46,6 +49,9 @@ function App() {
           {/* Otras páginas */}
           <Route path="/contacto" element={<ContactoPage />} />
           <Route path="/about" element={<AboutPage />} />
+
+          {/* ✅ Nueva ruta: Historial de Compras */}
+          <Route path="/historial" element={<HistorialComprasPage />} />
 
           {/* Ruta por defecto */}
           <Route path="*" element={<Navigate to="/login" />} />
