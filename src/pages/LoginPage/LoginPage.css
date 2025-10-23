@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #cccaca, #848383);
+  background: linear-gradient(135deg, #f0f0f0, #c4c4c4);
   font-family: "Poppins", sans-serif;
 }
 
@@ -82,7 +82,7 @@
   width: 100%;
   padding: 14px;
   margin-top: 14px;
-  background: linear-gradient(135deg, #d4af37, #cfae4e);
+  background: linear-gradient(135deg, #cbb27a, #cfae4e);
   border: none;
   border-radius: 10px;
   color: #fff;
