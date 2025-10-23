@@ -1,8 +1,8 @@
 // src/App.js
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { CartProvider } from "./contexts/CartContext"; 
+import { CartProvider } from "./contexts/CartContext";
 
-// 🔹 Importar páginas
+// 🔹 Páginas principales
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
@@ -12,36 +12,37 @@ import ProductosPage from "./pages/ProductosPage";
 import CategoriasPage from "./pages/CategoriasPage";
 import ContactoPage from "./pages/ContactoPage";
 import AboutPage from "./pages/AboutPage";
-import CheckoutPage from "./pages/CheckoutPage"; 
+import CheckoutPage from "./pages/CheckoutPage";
 import SuccessPage from "./pages/SuccessPage";
-
-// ✅ Nueva página: Historial de Compras
 import HistorialComprasPage from "./pages/HistorialComprasPage/HistorialComprasPage";
+
+// ✅ Nueva página de perfil
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
     <CartProvider>
       <BrowserRouter>
         <Routes>
-          {/* Página de inicio -> redirige a Login */}
           <Route path="/" element={<Navigate to="/login" />} />
 
-          {/* Rutas de autenticación */}
+          {/* Autenticación */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
 
-          {/* Rutas privadas */}
+          {/* Páginas principales */}
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/profile" element={<ProfilePage />} /> {/* ✅ Nueva ruta */}
 
           {/* Carrito y pago */}
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} /> 
-          <Route path="/success" element={<SuccessPage />} /> 
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
 
           {/* Productos */}
-          <Route path="/productos" element={<ProductosPage />} />           {/* Todos los productos */}
-          <Route path="/productos/:categoria" element={<ProductosPage />} /> {/* Productos por categoría */}
+          <Route path="/productos" element={<ProductosPage />} />
+          <Route path="/productos/:categoria" element={<ProductosPage />} />
 
           {/* Categorías */}
           <Route path="/categorias" element={<CategoriasPage />} />
@@ -49,11 +50,8 @@ function App() {
           {/* Otras páginas */}
           <Route path="/contacto" element={<ContactoPage />} />
           <Route path="/about" element={<AboutPage />} />
-
-          {/* ✅ Nueva ruta: Historial de Compras */}
           <Route path="/historial" element={<HistorialComprasPage />} />
 
-          {/* Ruta por defecto */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>

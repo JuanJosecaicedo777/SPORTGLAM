@@ -15,8 +15,7 @@ function AboutPage() {
 
         <h1>Sobre SportGlam</h1>
         <p>
-          SportGlam es una tienda en línea que combina lo mejor del deporte y la moda.
-          Nuestro objetivo es que luzcas bien mientras entrenas y en tu día a día.
+         SportGlam es una tienda en línea que fusiona la energía del deporte con la elegancia de la moda. Nos apasiona ofrecerte una experiencia de compra segura, moderna y confiable, donde cada prenda y accesorio ha sido diseñado para destacar tu estilo y acompañarte en cada movimiento.
         </p>
         <p>
           Ofrecemos productos de alta calidad, diseños exclusivos y experiencias de compra

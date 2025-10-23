@@ -17,14 +17,14 @@ const HistorialComprasPage = () => {
         {
           id: "001",
           fecha: "2025-10-10",
-          productos: ["Camiseta deportiva", "Pantaloneta"],
+          productos: ["Camiseta deportiva adidas",],
           total: 120000,
           estado: "Entregado",
         },
         {
           id: "002",
           fecha: "2025-09-20",
-          productos: ["Tenis SportGlam", "Gorra"],
+          productos: ["Tenis puma",],
           total: 220000,
           estado: "En envío",
         },
